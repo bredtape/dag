@@ -56,6 +56,7 @@ func dfs[T comparable](g DirectedGraph[T], visited, marked set.Set[T], node T) (
 	visited.Add(node)
 	marked.Add(node)
 	for _, n := range g.DependsOn(node) {
+		// we came back to a predecessor node already visited
 		if marked.Contains(n) {
 			return nil, ErrGraphHaveCycles
 		}
