@@ -38,6 +38,10 @@ func TopologicalSort[T comparable](g DirectedGraph[T]) ([]T, error) {
 			}
 			visited.Add(x)
 		}
+
+		if visited.Count() == len(nodes) {
+			break
+		}
 	}
 
 	slices.Reverse(order)
